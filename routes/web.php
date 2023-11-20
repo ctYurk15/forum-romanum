@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/', '\App\Http\Controllers\MainPage@index')->name('home');
+
+Route::get('/symposium', '\App\Http\Controllers\Symposium@all')->name('all-symposiums');
+Route::get('/symposium/{symposium_id}', '\App\Http\Controllers\Symposium@single')->name('symposium');
+
+Route::get('/suffragium', '\App\Http\Controllers\Suffragium@all')->name('all-suffragiums');
+Route::get('/suffragium/{suffragium_id}', '\App\Http\Controllers\Suffragium@single')->name('suffragium');
