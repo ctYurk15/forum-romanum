@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::get('/', '\App\Http\Controllers\MainPage@index')->name('home');
+Route::get('/top-rating', '\App\Http\Controllers\OtherPages@topRating')->name('top-rating');
 
 Route::get('/symposium', '\App\Http\Controllers\Symposium@all')->name('all-symposiums');
 Route::get('/symposium/{symposium_id}', '\App\Http\Controllers\Symposium@single')->name('symposium');
