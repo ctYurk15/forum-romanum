@@ -1,0 +1,19 @@
+.hidden
+{
+    display: none;
+}
+
+.header-button 
+{
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 0;
+    transition: background-color 0.3s ease;
+}
+
+.header-button:hover
+{
+    background-color: rgba(255, 255, 255, 0.2);
+}

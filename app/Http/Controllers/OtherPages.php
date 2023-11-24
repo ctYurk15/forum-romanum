@@ -8,4 +8,9 @@ class OtherPages extends Controller
     {
         return view('other/top-rating');
     }
+
+    public function currentUserPage()
+    {
+        return view('other/current-user-page');
+    }
 }
