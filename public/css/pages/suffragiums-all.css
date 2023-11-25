@@ -9,7 +9,7 @@ main
     box-sizing: border-box;
 }
 
-.forum-room 
+.forum-suffragium 
 {
     min-height: 300px;
     background-color: #f9f9f9;
@@ -24,20 +24,29 @@ main
     text-decoration: none;
 }
 
-.forum-room:hover 
+.forum-suffragium:hover 
 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.room-content 
+.suffragium-content 
 {
     flex: 1;
     padding: 20px;
 }
 
-.room-details 
+.suffragium-details 
 {
     background-color: #ddd;
     padding: 10px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70px;
+}
+
+.suffragium-details p
+{
+    margin: auto;
 }

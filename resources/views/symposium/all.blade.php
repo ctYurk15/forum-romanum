@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/libraries/bootstrap-5.3.2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pages/symposiums-all.css') }}">
     <link rel="stylesheet" href="{{ asset('css/partials/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/partials/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/partials/main.css') }}">
     
     <script src="{{ asset('js/jquery-3.7.1.js') }}" defer></script>
@@ -17,12 +18,7 @@
 
     @include('partials.header', ['title' => 'Forum symposiums', 'button_title' => 'Create new symposium'])
 
-    <div class="pagination">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <!-- Add more pagination links as needed -->
-    </div>
+    @include('partials.pagination', ['title' => 'Forum symposiums', 'button_title' => 'Create new symposium'])
 
     <main>
         <a class="forum-room" href="{{ route('symposium', ['symposium_id' => 1]) }}">
@@ -72,16 +68,7 @@
                 <p>Total Messages: 28</p>
             </div>
         </a>
-
-        <!-- Add more forum rooms as needed -->
-
     </main>
-
-    <!-- Search bar -->
-    <div class="search-bar">
-        <input type="text" class="search-input" placeholder="Search...">
-        <button class="search-button">Search</button>
-    </div>
 
 </body>
 </html>
