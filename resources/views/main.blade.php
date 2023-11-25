@@ -16,7 +16,7 @@
         <!-- Content for the first block -->
         <h1>Welcome to Forum of {{ $city_name }}</h1>
         <div class="user-box header-button">
-            <a href="{{ route('current-user-page') }}">Username</a>
+            <a href="{{ route('current-user-page') }}">Profile</a>
         </div>
         <div class="user-box header-button hidden">
             <a href="login.html">Login</a>
