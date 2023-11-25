@@ -8,34 +8,24 @@
 
     <link rel="stylesheet" href="{{ asset('css/libraries/bootstrap-5.3.2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pages/symposiums-all.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/partials/header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/partials/main.css') }}">
     
     <script src="{{ asset('js/jquery-3.7.1.js') }}" defer></script>
 </head>
 <body>
-    <header>
-        <h1>
-            Forum Rooms<br>
-            <button class="create-room-button">Create New Room</button>
-        </h1>
-        <div class="header-buttons">
-            <a href="#">Profile</a>
-            <a href="#" class="hidden">Login</a>
-        </div>
-        <div class="main-page-container">
-            <a href="{{ route('home') }}">Main page</a>
-        </div>
-    </header>
 
-        <div class="pagination">
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <!-- Add more pagination links as needed -->
-        </div>
+    @include('partials.header', ['title' => 'Forum symposiums', 'button_title' => 'Create new symposium'])
+
+    <div class="pagination">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <!-- Add more pagination links as needed -->
+    </div>
 
     <main>
-        <div class="forum-room">
+        <a class="forum-room" href="{{ route('symposium', ['symposium_id' => 1]) }}">
             <div class="room-content">
                 <h2>Room 1</h2>
                 <p>Description for Room 1.</p>
@@ -45,9 +35,9 @@
                 <p>Last Message: September 5, 2023</p>
                 <p>Total Messages: 50</p>
             </div>
-        </div>
+        </a>
 
-        <div class="forum-room">
+        <a class="forum-room" href="{{ route('symposium', ['symposium_id' => 2]) }}">
             <div class="room-content">
                 <h2>Room 2</h2>
                 <p>Description for Room 2.</p>
@@ -57,9 +47,9 @@
                 <p>Last Message: August 20, 2023</p>
                 <p>Total Messages: 30</p>
             </div>
-        </div>
+        </a>
 
-        <div class="forum-room">
+        <a class="forum-room" href="{{ route('symposium', ['symposium_id' => 3]) }}">
             <div class="room-content">
                 <h2>Room 3</h2>
                 <p>Description for Room 3.</p>
@@ -69,19 +59,19 @@
                 <p>Last Message: July 10, 2023</p>
                 <p>Total Messages: 25</p>
             </div>
-        </div>
+        </a>
 
-        <div class="forum-room">
+        <a class="forum-room" href="{{ route('symposium', ['symposium_id' => 4]) }}">
             <div class="room-content">
-                <h2>Room 3</h2>
-                <p>Description for Room 3.</p>
+                <h2>Room 4</h2>
+                <p>Description for Room 4.</p>
             </div>
             <div class="room-details">
-                <p>Created: July 5, 2023</p>
+                <p>Created: July 6, 2023</p>
                 <p>Last Message: July 10, 2023</p>
-                <p>Total Messages: 25</p>
+                <p>Total Messages: 28</p>
             </div>
-        </div>
+        </a>
 
         <!-- Add more forum rooms as needed -->
 

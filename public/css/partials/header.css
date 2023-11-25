@@ -1,0 +1,82 @@
+body 
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+}
+
+header 
+{
+    height: 20vh;
+    background: url('https://picsum.photos/1920/250') center/cover no-repeat;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.header-button 
+{
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 0;
+    transition: background-color 0.3s ease;
+}
+
+.header-button a
+{
+    text-decoration: none;
+    color: #fff;
+}
+
+.header-button:hover
+{
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.main-page-container
+{
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.header-buttons 
+{
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.create-button 
+{
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 0; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.5em
+}
+
+.create-button:hover 
+{
+    background-color: #45a049;
+}
+
+.page-title
+{
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}

@@ -1,22 +1,3 @@
-body 
-{
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f2f2f2; /* Roman Republic background color */
-}
-
-header 
-{
-    height: 20vh;
-    background: url('https://picsum.photos/1920/250') center/cover no-repeat;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-}
-
 main 
 {
     width: 100%;
@@ -39,6 +20,8 @@ main
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    color: #000;
+    text-decoration: none;
 }
 
 .forum-room:hover 
@@ -56,63 +39,6 @@ main
 {
     background-color: #ddd;
     padding: 10px;
-    text-align: center;
-}
-
-.header-buttons 
-{
-    display: flex;
-    gap: 10px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-.main-page-container
-{
-    display: flex;
-    gap: 10px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-.header-buttons a, .main-page-container a 
-{
-    text-decoration: none;
-    color: #fff;
-    padding: 10px;
-    border: 1px solid #fff;
-    border-radius: 0;
-    transition: background-color 0.3s ease;
-}
-
-.header-buttons a:hover, .main-page-container a:hover 
-{
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.create-room-button 
-{
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 0; 
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 0.5em
-}
-
-.create-room-button:hover 
-{
-    background-color: #45a049;
-}
-
-h1 
-{
-    margin: 0;
-    flex: 1;
     text-align: center;
 }
 
@@ -138,7 +64,8 @@ h1
     background-color: #555;
 }
 
-.search-bar {
+.search-bar 
+{
     position: fixed;
     top: calc(20vh + 10px);
     right: 20px;
@@ -146,14 +73,16 @@ h1
     align-items: center;
 }
 
-.search-input {
+.search-input 
+{
     padding: 8px;
     border: none;
     margin-right: 10px;
     font-size: 14px;
 }
 
-.search-button {
+.search-button 
+{
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -161,6 +90,7 @@ h1
     cursor: pointer;
 }
 
-.search-button:hover {
+.search-button:hover 
+{
     background-color: #45a049;
 }

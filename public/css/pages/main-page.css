@@ -1,11 +1,12 @@
-body {
+body 
+{
     margin: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 5px; /* Add gap between blocks */
-    background-color: #f6f6f6; /* Light background color */
-    font-family: 'Times New Roman', serif; /* Roman-inspired font */
+    gap: 5px;
+    background-color: #f6f6f6;
+    font-family: 'Times New Roman', serif;
 }
 
 #first-block 
@@ -13,7 +14,7 @@ body {
     position: relative;
     height: 40vh;
     width: 100%;
-    background: url('https://picsum.photos/1920/400') center/cover no-repeat; /* Replace 'your-roman-background-image.jpg' with your actual image path */
+    background: url('https://picsum.photos/1920/400') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,8 +43,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #fff; /* White background color for content blocks */
-    border: 1px solid #ccc; /* Border around content blocks */
+    background-color: #fff; 
+    border: 1px solid #ccc; 
 }
 
 .link-block-container
@@ -55,26 +56,30 @@ body {
     grid-gap: 5px;
 }
 
-/* Optional: Add styles for the content within each block */
-#second-block, #third-block, #fourth-block {
+#second-block, #third-block, #fourth-block 
+{
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: #000; /* Text color on the content blocks */
+    color: #000;
 }
 
-#second-block:hover, #third-block:hover, #fourth-block:hover {
+#second-block:hover, #third-block:hover, #fourth-block:hover 
+{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
 
-#second-block {
+#second-block 
+{
     background: url('https://picsum.photos/750/450?random=1') center/cover no-repeat; 
 }
 
-#third-block {
+#third-block 
+{
     background: url('https://picsum.photos/750/450?random=2') center/cover no-repeat; 
 }
 
-#fourth-block {
+#fourth-block 
+{
     background: url('https://picsum.photos/750/450?random=3') center/cover no-repeat; 
 }
