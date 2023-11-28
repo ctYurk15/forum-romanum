@@ -1,7 +1,10 @@
 <header>
     <h1 class="page-title">
         {{ $title }}<br>
-        <button class="create-button">{{ $button_title }}</button>
+        @if ($button_title != "")
+            <button class="create-button">{{ $button_title }}</button>
+        @endif
+        
     </h1>
     <div class="header-button header-buttons">
         <a href="#">Profile</a>

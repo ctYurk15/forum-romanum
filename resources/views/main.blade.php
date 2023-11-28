@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/libraries/bootstrap-5.3.2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pages/main-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/partials/header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/partials/main.css') }}">
     
     <script src="{{ asset('js/jquery-3.7.1.js') }}" defer></script>

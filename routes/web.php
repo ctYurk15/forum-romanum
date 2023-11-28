@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::get('/', '\App\Http\Controllers\MainPage@index')->name('home');
-Route::get('/top-rating', '\App\Http\Controllers\OtherPages@topRating')->name('top-rating');
+Route::get('/arcus-triumphalis', '\App\Http\Controllers\OtherPages@topRating')->name('top-rating');
 Route::get('/current-user-page', '\App\Http\Controllers\OtherPages@currentUserPage')->name('current-user-page');
 
 Route::get('/symposium', '\App\Http\Controllers\Symposium@all')->name('all-symposiums');
