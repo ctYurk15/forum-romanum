@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 class OtherPages extends Controller
 {
-    public function topRating()
+    public function arcusTriumphalis()
     {
-        return view('other/top-rating')->with([
+        return view('other/arcus-triumphalis')->with([
             'topUsers' => [
                 [
                     'name' => 'name1',

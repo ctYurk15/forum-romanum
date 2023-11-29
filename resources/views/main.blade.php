@@ -30,7 +30,7 @@
         <a id="third-block" href="{{ route('all-suffragiums') }}">
             <h2>Suffragiums</h2>
         </a>
-        <a id="fourth-block" href="{{ route('top-rating') }}">
+        <a id="fourth-block" href="{{ route('arcus-triumphalis') }}">
             <h2>Arcus triumphalis</h2>
         </a>
     </div>
