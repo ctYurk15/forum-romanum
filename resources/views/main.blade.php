@@ -16,11 +16,11 @@
     <div id="first-block">
         <!-- Content for the first block -->
         <h1>Welcome to Forum of {{ $city_name }}</h1>
-        <div class="user-box header-button">
+        <div class="user-box header-button hidden">
             <a href="{{ route('current-user-page') }}">Profile</a>
         </div>
-        <div class="user-box header-button hidden">
-            <a href="login.html">Login</a>
+        <div class="user-box header-button">
+            <a href="{{ route('login-page') }}">Login</a>
         </div>
     </div>
     <div class="link-block-container">

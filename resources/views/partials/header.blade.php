@@ -6,11 +6,17 @@
         @endif
         
     </h1>
-    <div class="header-button header-buttons">
-        <a href="#">Profile</a>
-        <a href="#" class="hidden">Login</a>
-    </div>
+    @isset($var)
+
+    @endisset
+    @if (empty($hide_auth_buttons) || (!empty($hide_auth_buttons) && $hide_auth_buttons != true))
+        <div class="header-button header-buttons">
+            <a href="{{ route('current-user-page') }}">Profile</a>
+            <a href="#" class="hidden">Login</a>
+        </div>
+    @endif
     <div class="main-page-container header-button">
         <a href="{{ route('home') }}">Main page</a>
     </div>
+    
 </header>

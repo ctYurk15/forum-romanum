@@ -21,6 +21,9 @@ Route::get('/', '\App\Http\Controllers\MainPage@index')->name('home');
 Route::get('/arcus-triumphalis', '\App\Http\Controllers\OtherPages@arcusTriumphalis')->name('arcus-triumphalis');
 Route::get('/current-user-page', '\App\Http\Controllers\OtherPages@currentUserPage')->name('current-user-page');
 
+Route::get('/login-page', '\App\Http\Controllers\Auth@loginPage')->name('login-page');
+Route::get('/register-page', '\App\Http\Controllers\Auth@registerPage')->name('register-page');
+
 Route::get('/symposium', '\App\Http\Controllers\Symposium@all')->name('all-symposiums');
 Route::get('/symposium/{symposium_id}', '\App\Http\Controllers\Symposium@single')->name('symposium');
 
