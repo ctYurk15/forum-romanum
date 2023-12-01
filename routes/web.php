@@ -25,7 +25,9 @@ Route::get('/login-page', '\App\Http\Controllers\Auth@loginPage')->name('login-p
 Route::get('/register-page', '\App\Http\Controllers\Auth@registerPage')->name('register-page');
 
 Route::get('/symposium', '\App\Http\Controllers\Symposium@all')->name('all-symposiums');
+Route::get('/symposium/new', '\App\Http\Controllers\Symposium@new')->name('symposium-new');
 Route::get('/symposium/{symposium_id}', '\App\Http\Controllers\Symposium@single')->name('symposium');
 
 Route::get('/suffragium', '\App\Http\Controllers\Suffragium@all')->name('all-suffragiums');
+Route::get('/suffragium/new', '\App\Http\Controllers\Suffragium@new')->name('suffragium-new');
 Route::get('/suffragium/{suffragium_id}', '\App\Http\Controllers\Suffragium@single')->name('suffragium');

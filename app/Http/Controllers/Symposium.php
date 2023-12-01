@@ -16,4 +16,9 @@ class Symposium extends Controller
             'id' => $symposium_id
         ]);
     }
+
+    public function new()
+    {
+        return view('symposium/new');
+    }
 }

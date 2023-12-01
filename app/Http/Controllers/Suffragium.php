@@ -16,4 +16,9 @@ class Suffragium extends Controller
             'id' => $suffragium_id
         ]);
     }
+
+    public function new()
+    {
+        return view('suffragium/new');
+    }
 }

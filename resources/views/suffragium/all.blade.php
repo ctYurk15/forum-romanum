@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    @include('partials.header', ['title' => 'Forum suffragiums', 'button_title' => 'Create new suffragium'])
+    @include('partials.header', ['title' => 'Forum suffragiums', 'button_title' => 'Create new suffragium', 'button_link' => route('suffragium-new')])
 
     @include('partials.pagination')
 

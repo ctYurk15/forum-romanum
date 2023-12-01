@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    @include('partials.header', ['title' => 'Forum symposiums', 'button_title' => 'Create new symposium'])
+    @include('partials.header', ['title' => 'Forum symposiums', 'button_title' => 'Create new symposium', 'button_link' => route('symposium-new')])
 
     @include('partials.pagination', ['title' => 'Forum symposiums', 'button_title' => 'Create new symposium'])
 
