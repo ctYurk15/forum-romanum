@@ -1,44 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </x-slot>
 
-    <title>Forum - user account</title>
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <link rel="stylesheet" href="{{ asset('css/libraries/bootstrap-5.3.2.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/pages/login-page.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/partials/header.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/partials/pagination.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/partials/main.css') }}">
-    
-    <script src="{{ asset('js/jquery-3.7.1.js') }}" defer></script>
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-</head>
-<body>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
 
-    @include('partials.header', ['title' => 'Login to an account', 'button_title' => '', 'hide_auth_buttons' => true])
+            <!-- Email Address -->
+            <div>
+                <x-label for="email" :value="__('Email')" />
 
-    <main>
-        <div class="login-container">
-            <h2>Login</h2>
-            <form action="#" method="post">
-                <label>
-                    Email/Login:
-                    <input type="text" id="email" name="email" required>
-                </label>
-                <label>
-                    Password:
-                    <input type="password" id="password" name="password" required>
-                </label>
-
-                <button type="submit" class="login-button">Login</button>
-            </form>
-
-            <div class="register-link">
-                <p>Don't have an account? <a href="{{ route('register-page') }}">Register here</a></p>
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
-        </div>
-    </main>
 
-</boy>
+            <!-- Password -->
+            <div class="mt-4">
+                <x-label for="password" :value="__('Password')" />
+
+                <x-input id="password" class="block mt-1 w-full"
+                                type="password"
+                                name="password"
+                                required autocomplete="current-password" />
+            </div>
+
+            <!-- Remember Me -->
+            <div class="block mt-4">
+                <label for="remember_me" class="inline-flex items-center">
+                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                </label>
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+
+                <x-button class="ml-3">
+                    {{ __('Log in') }}
+                </x-button>
+            </div>
+        </form>
+    </x-auth-card>
+</x-guest-layout>

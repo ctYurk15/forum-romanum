@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-});*/
+});
 
-Route::get('/', '\App\Http\Controllers\MainPage@index')->name('home');
+//Route::get('/', '\App\Http\Controllers\MainPage@index')->name('home');
 Route::get('/arcus-triumphalis', '\App\Http\Controllers\OtherPages@arcusTriumphalis')->name('arcus-triumphalis');
 Route::get('/current-user-page', '\App\Http\Controllers\OtherPages@currentUserPage')->name('current-user-page');
 
@@ -31,3 +31,9 @@ Route::get('/symposium/{symposium_id}', '\App\Http\Controllers\Symposium@single'
 Route::get('/suffragium', '\App\Http\Controllers\Suffragium@all')->name('all-suffragiums');
 Route::get('/suffragium/new', '\App\Http\Controllers\Suffragium@new')->name('suffragium-new');
 Route::get('/suffragium/{suffragium_id}', '\App\Http\Controllers\Suffragium@single')->name('suffragium');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
