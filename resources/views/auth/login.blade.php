@@ -1,56 +1,50 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+    <title>Forum - user account</title>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <link rel="stylesheet" href="{{ asset('css/libraries/bootstrap-5.3.2.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/login-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/partials/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/partials/pagination.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/partials/main.css') }}">
+    
+    <script src="{{ asset('js/jquery-3.7.1.js') }}" defer></script>
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+</head>
+<body>
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+    @include('partials.header', ['title' => 'Login to an account', 'button_title' => '', 'hide_auth_buttons' => true])
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
+    <main>
+        <div class="login-container">
+            <h2>Login</h2>
+            
+            <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+            <form action="{{ route('login') }}" method="post">
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
+                @csrf
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                <label>
+                    Email/Login:
+                    <input type="text" id="email" name="email" required  :value="old('email')">
                 </label>
-            </div>
+                <label>
+                    Password:
+                    <input type="password" id="password" name="password" required>
+                </label>
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
+                <button type="submit" class="login-button">Login</button>
+            </form>
 
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
+            <div class="register-link">
+                <p>Don't have an account? <a href="{{ route('register') }}">Register here</a></p>
             </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+        </div>
+    </main>
+
+</boy>

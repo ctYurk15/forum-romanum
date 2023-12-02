@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
-//Route::get('/', '\App\Http\Controllers\MainPage@index')->name('home');
+Route::get('/', '\App\Http\Controllers\MainPage@index')->name('home');
 Route::get('/arcus-triumphalis', '\App\Http\Controllers\OtherPages@arcusTriumphalis')->name('arcus-triumphalis');
 Route::get('/current-user-page', '\App\Http\Controllers\OtherPages@currentUserPage')->name('current-user-page');
 

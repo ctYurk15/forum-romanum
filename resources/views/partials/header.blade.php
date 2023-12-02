@@ -14,7 +14,7 @@
     @if (empty($hide_auth_buttons) || (!empty($hide_auth_buttons) && $hide_auth_buttons != true))
         <div class="header-button header-buttons">
             <a href="{{ route('current-user-page') }}">Profile</a>
-            <a href="#" class="hidden">Login</a>
+            <a href="{{ route('login') }}" class="hidden">Login</a>
         </div>
     @endif
     <div class="main-page-container header-button">

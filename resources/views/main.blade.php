@@ -20,7 +20,7 @@
             <a href="{{ route('current-user-page') }}">Profile</a>
         </div>
         <div class="user-box header-button">
-            <a href="{{ route('login-page') }}">Login</a>
+            <a href="{{ route('login') }}">Login</a>
         </div>
     </div>
     <div class="link-block-container">
