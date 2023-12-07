@@ -16,12 +16,16 @@
     <div id="first-block">
         <!-- Content for the first block -->
         <h1>Welcome to Forum of {{ $city_name }}</h1>
-        <div class="user-box header-button hidden">
-            <a href="{{ route('current-user-page') }}">Profile</a>
-        </div>
-        <div class="user-box header-button">
-            <a href="{{ route('login') }}">Login</a>
-        </div>
+        
+        @if (Illuminate\Support\Facades\Auth::check())
+            <div class="user-box header-button">
+                <a href="{{ route('current-user-page') }}">Profile</a>
+            </div>
+        @else
+            <div class="user-box header-button">
+                <a href="{{ route('login') }}">Login</a>
+            </div>
+        @endif
     </div>
     <div class="link-block-container">
         <a id="second-block"  href="{{ route('all-symposiums') }}">

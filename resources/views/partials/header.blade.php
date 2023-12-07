@@ -13,8 +13,11 @@
     
     @if (empty($hide_auth_buttons) || (!empty($hide_auth_buttons) && $hide_auth_buttons != true))
         <div class="header-button header-buttons">
-            <a href="{{ route('current-user-page') }}">Profile</a>
-            <a href="{{ route('login') }}" class="hidden">Login</a>
+            @if (Illuminate\Support\Facades\Auth::check())
+                <a href="{{ route('current-user-page') }}">Profile</a>
+            @else
+                <a href="{{ route('login') }}">Login</a>
+            @endif
         </div>
     @endif
     <div class="main-page-container header-button">
