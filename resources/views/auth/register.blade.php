@@ -22,11 +22,12 @@
     <main>
         <div class="login-container">
             <h2>Register</h2>
-            <form action="#" method="post">
-                <label>
-                    Login:
-                    <input type="text" name="login" required>
-                </label>
+
+            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+            <form action="{{ route('register') }}" method="post">
+
+                @csrf
                 
                 <label>
                     Email:
@@ -35,7 +36,7 @@
 
                 <label>
                     Full name:
-                    <input type="text" name="full_name" required>
+                    <input type="text" name="name" required>
                 </label>
 
                 <label>
@@ -45,14 +46,14 @@
 
                 <label>
                     Repeat password:
-                <input type="password" name="repeat_password" required>
+                <input type="password" name="password_confirmation" required>
                 </label>
 
                 <button type="submit" class="login-button">Register</button>
             </form>
 
             <div class="register-link">
-                <p>Have an account? <a href="{{ route('login-page') }}">Login here</a></p>
+                <p>Have an account? <a href="{{ route('login') }}">Login here</a></p>
             </div>
         </div>
     </main>

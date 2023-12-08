@@ -24,32 +24,39 @@
         </div>
         <div class="user-data">
             <h2>User Account Details</h2>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <a class="logout-button" href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();">
+                    Logout
+                </a>
+            </form>
             <table>
                 <tr>
-                    <th>Username</th>
-                    <td>JohnDoe123</td>
-                </tr>
-                <tr>
-                    <th>User's Phone</th>
-                    <td>(123) 456-7890</td>
-                </tr>
-                <tr>
                     <th>Email</th>
-                    <td>johndoe@example.com</td>
+                    <td>{{ $user->email }}</td>
                 </tr>
                 <tr>
                     <th>Full Name</th>
-                    <td>John Doe</td>
+                    <td>{{ $user->name }}</td>
                 </tr>
                 <tr>
                     <th>Registration Date</th>
-                    <td>2023-01-01</td>
+                    <td>{{ $user->created_at }}</td>
                 </tr>
                 <tr>
-                    <th>User Rating</th>
-                    <td>+ 42</td>
+                    <th>
+                        User Rating
+                    </th>
+                    <td>
+                        @if ($user->rating > 0)
+                            <span style="color: green">+{{ $user->rating }}</span>
+                        @elseif ($user->rating < 0)
+                            <span style="color: red">{{ $user->rating }}</span>
+                        @else
+                            <span>{{ $user->rating }}</span>
+                        @endif
+                    </td>
                 </tr>
-                <!-- Add more user data as needed -->
             </table>
         </div>
     </div>

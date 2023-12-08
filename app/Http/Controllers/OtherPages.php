@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class OtherPages extends Controller
 {
     public function arcusTriumphalis()
@@ -74,6 +76,9 @@ class OtherPages extends Controller
 
     public function currentUserPage()
     {
-        return view('other/current-user-page');
+        $user_info = Auth::user();
+        return view('other/current-user-page')->with([
+            'user' => $user_info
+        ]);
     }
 }

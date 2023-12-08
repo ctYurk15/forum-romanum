@@ -22,10 +22,16 @@
     <main>
         <div class="login-container">
             <h2>Login</h2>
-            <form action="#" method="post">
+            
+            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+            <form action="{{ route('login') }}" method="post">
+
+                @csrf
+
                 <label>
                     Email/Login:
-                    <input type="text" id="email" name="email" required>
+                    <input type="text" id="email" name="email" required  :value="old('email')">
                 </label>
                 <label>
                     Password:
@@ -36,7 +42,7 @@
             </form>
 
             <div class="register-link">
-                <p>Don't have an account? <a href="{{ route('register-page') }}">Register here</a></p>
+                <p>Don't have an account? <a href="{{ route('register') }}">Register here</a></p>
             </div>
         </div>
     </main>
