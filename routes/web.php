@@ -34,6 +34,9 @@ Route::get('/suffragium', '\App\Http\Controllers\Suffragium@all')->name('all-suf
 Route::get('/suffragium/new', '\App\Http\Controllers\Suffragium@new')->name('suffragium-new');
 Route::get('/suffragium/{suffragium_id}', '\App\Http\Controllers\Suffragium@single')->name('suffragium');
 
+//ajax
+Route::post('/set-profile-picture/{picture_path}/{user_id}', '\App\Http\Controllers\UserController@setProfilePicture')->name('set-profile-picture');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

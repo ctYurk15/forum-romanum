@@ -12,7 +12,7 @@
 }
 
 .user-profile img {
-    width: 100%;
+    width: 400px;
     height: auto;
 }
 
@@ -55,4 +55,25 @@ th {
 {
     background-color: hsl(0, 40%, 29%);
     cursor: pointer;
+}
+
+.available-photos-cotnainers
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    max-width: 400px;
+    width: fit-content;
+    margin-top: 20px;
+    grid-gap: 10px;
+}
+
+.available-photos-cotnainers img
+{
+    width: 50px;
+    cursor: pointer;
+}
+
+.selected-profile-picture
+{
+    border: 4px solid hsl(0, 39%, 49%);
 }

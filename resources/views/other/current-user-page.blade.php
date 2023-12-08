@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Forum - user account</title>
 
@@ -20,7 +21,22 @@
     
     <div class="user-details-container">
         <div class="user-profile">
-            <img src="https://picsum.photos/600/600" alt="Profile Picture">
+            @if ($user->photo_path == "")
+                <img src="{{ asset('img/profile-pictures/no_profile.png') }}" alt="Profile Picture">
+            @else
+                <img src="{{ asset('img/profile-pictures/'.$user->photo_path) }}" alt="Profile Picture">
+            @endif
+            <div class="available-photos-cotnainers">
+                @foreach($profile_images as $index => $profile_image)
+                    <img src="{{ asset('img/profile-pictures/profile'.($index+1).'.png') }}" 
+                        @if ($profile_image == $user->photo_path)
+                            class="selected-profile-picture"
+                        @else
+                            class="profile-picture-option" data-url="{{ route('set-profile-picture', ['picture_path' => $profile_image, 'user_id' => $user->id]) }}"
+                        @endif
+                    alt="Profile Picture">
+                @endforeach
+            </div>
         </div>
         <div class="user-data">
             <h2>User Account Details</h2>
@@ -61,4 +77,6 @@
         </div>
     </div>
 
-</boy>
+</body>
+    
+<script src="{{ asset('js/pages/current-user-page.js') }}" defer></script>
