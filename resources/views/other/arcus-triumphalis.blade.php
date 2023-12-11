@@ -23,15 +23,19 @@
 
     <main>
         <!-- User cards go here -->
-        @foreach($topUsers as $user)
+        @foreach($top_rating_users as $user)
             <div class="user-card">
                 <div class="user-content">
-                    <img src="{{ $user['profile_photo'] }}" alt="Profile Photo" class="user-photo">
-                    <h2 class="user-name">{{ $user['name'] }}</h2>
-                    <p class="user-rating">Rating: {{ $user['rating'] }}</p>
+                    @if ($user->photo_path == "")
+                        <img src="{{ asset('img/profile-pictures/no_profile.png') }}" alt="Profile Picture" class="user-photo">
+                    @else
+                        <img src="{{ asset('img/profile-pictures/'.$user->photo_path) }}" alt="Profile Photo" class="user-photo">
+                    @endif
+                    <h2 class="user-name">{{ $user->name }}</h2>
+                    <p class="user-rating">Rating: {{ $user->rating }}</p>
                 </div>
                 <div class="user-details">
-                    <div>Joined: {{ $user['join_date'] }}</div>
+                    <div>Joined: {{ $user->created_at }}</div>
                     <!-- Add more user details as needed -->
                 </div>
             </div>
