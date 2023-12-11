@@ -21,54 +21,37 @@
     @include('partials.pagination', ['title' => 'Forum symposiums', 'button_title' => 'Create new symposium'])
 
     <main>
-        <a class="forum-room" href="{{ route('symposium', ['symposium_id' => 1]) }}">
-            <div class="room-content">
-                <h2>Room 1</h2>
-                <p>Description for Room 1.</p>
-            </div>
-            <div class="room-details">
-                <p>Created: September 1, 2023</p>
-                <p>Last Message: September 5, 2023</p>
-                <p>Total Messages: 50</p>
-            </div>
-        </a>
-
-        <a class="forum-room" href="{{ route('symposium', ['symposium_id' => 2]) }}">
-            <div class="room-content">
-                <h2>Room 2</h2>
-                <p>Description for Room 2.</p>
-            </div>
-            <div class="room-details">
-                <p>Created: August 15, 2023</p>
-                <p>Last Message: August 20, 2023</p>
-                <p>Total Messages: 30</p>
-            </div>
-        </a>
-
-        <a class="forum-room" href="{{ route('symposium', ['symposium_id' => 3]) }}">
-            <div class="room-content">
-                <h2>Room 3</h2>
-                <p>Description for Room 3.</p>
-            </div>
-            <div class="room-details">
-                <p>Created: July 5, 2023</p>
-                <p>Last Message: July 10, 2023</p>
-                <p>Total Messages: 25</p>
-            </div>
-        </a>
-
-        <a class="forum-room" href="{{ route('symposium', ['symposium_id' => 4]) }}">
-            <div class="room-content">
-                <h2>Room 4</h2>
-                <p>Description for Room 4.</p>
-            </div>
-            <div class="room-details">
-                <p>Created: July 6, 2023</p>
-                <p>Last Message: July 10, 2023</p>
-                <p>Total Messages: 28</p>
-            </div>
-        </a>
+        @foreach($rooms as $room)
+            <a class="forum-room" href="{{ route('symposium', ['symposium_id' => $room->id]) }}">
+                <div class="room-content">
+                    <h2>{{ $room->title }}</h2>
+                    <p>{{ $room->description }}</p>
+                </div>
+                <div class="room-details">
+                    <p>Created: {{ $room->created_at->format('F j, Y') }}</p>
+                    <p>Last Message: {{ $room->last_message_at ? $room->last_message_at->format('F j, Y') : 'N/A' }}</p>
+                    <p>Total Messages: {{ $room->messages_count ?? 0 }}</p>
+                </div>
+            </a>
+        @endforeach
     </main>
+
+    <!-- Manually build pagination links -->
+    @if($rooms->lastPage() > 1)
+        <div class="pagination">
+            @if($rooms->currentPage() > 1)
+                <a href="{{ $rooms->previousPageUrl() }}">Previous</a>
+            @endif
+
+            @for($i = 1; $i <= $rooms->lastPage(); $i++)
+                <a href="{{ $rooms->url($i) }}" class="{{ $rooms->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
+            @endfor
+
+            @if($rooms->currentPage() < $rooms->lastPage())
+                <a href="{{ $rooms->nextPageUrl() }}">Next</a>
+            @endif
+        </div>
+    @endif
 
 </body>
 </html>
