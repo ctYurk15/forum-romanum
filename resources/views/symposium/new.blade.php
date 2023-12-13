@@ -21,12 +21,14 @@
 
     <div class="new-room-container">
         <h2>Create a New Room</h2>
-        <form action="#" method="post">
+        <form  action="{{ route('symposium-save') }}" method="post">
+            @csrf
+            
             <label for="roomTitle">Room Title:</label>
-            <input type="text" id="roomTitle" name="roomTitle" required>
+            <input type="text" id="roomTitle" name="room_name" required>
 
             <label for="roomDescription">Room Description:</label>
-            <textarea id="roomDescription" name="roomDescription" rows="4" required></textarea>
+            <textarea id="roomDescription" name="room_description" rows="4" required></textarea>
 
             <button type="submit">Create Room</button>
         </form>

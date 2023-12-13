@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class Symposium extends Controller
 {
@@ -46,5 +47,28 @@ class Symposium extends Controller
     public function new()
     {
         return view('symposium/new');
+    }
+
+    public function save(Request $request)
+    {
+        // Validate form data
+        $request->validate([
+            'room_name' => 'required|string|max:255',
+            'room_description' => 'nullable|string',
+        ]);
+
+        // Create a new room
+        $room = new Room([
+            'title' => $request->input('room_name'),
+            'description' => $request->input('room_description'),
+            'creator_id' => Auth::user()->id
+            // Add any other necessary fields
+        ]);
+
+        // Save the room
+        $room->save();
+
+        // Redirect back or to a specific page
+        return redirect()->route('symposium', ['symposium_id' => $room->id])->with('success', 'Room created successfully!');
     }
 }

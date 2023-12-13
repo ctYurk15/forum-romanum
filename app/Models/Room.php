@@ -19,5 +19,8 @@ class Room extends Model
         'last_message_at',
     ];
 
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = null;
+
     // Define relationships or additional methods as needed
 }
