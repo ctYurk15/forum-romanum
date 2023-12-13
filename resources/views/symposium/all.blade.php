@@ -18,7 +18,26 @@
 
     @include('partials.header', ['title' => 'Forum symposiums', 'button_title' => 'Create new symposium', 'button_link' => route('symposium-new')])
 
-    @include('partials.pagination', ['title' => 'Forum symposiums', 'button_title' => 'Create new symposium'])
+    <form class="search-bar" action="{{ route('all-symposiums') }}" method="get">
+        <input type="text" class="search-input" placeholder="Search..." value="{{ request('name') }}" name='name'>
+        <button class="search-button">Search</button>
+    </form>
+
+    @if($rooms->lastPage() > 1)
+        <div class="pagination">
+            @if($rooms->currentPage() > 1)
+                <a href="{{ $rooms->previousPageUrl() }}">Previous</a>
+            @endif
+
+            @for($i = 1; $i <= $rooms->lastPage(); $i++)
+                <a href="{{ $rooms->url($i) }}" class="{{ $rooms->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
+            @endfor
+
+            @if($rooms->currentPage() < $rooms->lastPage())
+                <a href="{{ $rooms->nextPageUrl() }}">Next</a>
+            @endif
+        </div>
+    @endif
 
     <main>
         @foreach($rooms as $room)
@@ -35,23 +54,6 @@
             </a>
         @endforeach
     </main>
-
-    <!-- Manually build pagination links -->
-    @if($rooms->lastPage() > 1)
-        <div class="pagination">
-            @if($rooms->currentPage() > 1)
-                <a href="{{ $rooms->previousPageUrl() }}">Previous</a>
-            @endif
-
-            @for($i = 1; $i <= $rooms->lastPage(); $i++)
-                <a href="{{ $rooms->url($i) }}" class="{{ $rooms->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
-            @endfor
-
-            @if($rooms->currentPage() < $rooms->lastPage())
-                <a href="{{ $rooms->nextPageUrl() }}">Next</a>
-            @endif
-        </div>
-    @endif
 
 </body>
 </html>
