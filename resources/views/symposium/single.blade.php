@@ -43,7 +43,7 @@
 
         @foreach ($messages as $message)
             <div class="message-container">
-                <div class="user-info">
+                <a class="user-info" href="{{ route('user-page', ['user_id' => $message->user->id]) }}">
                     @if ($message->user->photo_path == "")
                         <img src="{{ asset('img/profile-pictures/no_profile.png') }}" alt="User Avatar" class="user-avatar">
                     @else
@@ -54,7 +54,7 @@
                         <h3>{{ $message->user->name }}</h3>
                         <span class="user-rating">Rating: {{ $message->user->rating }}</span>
                     </div>
-                </div>
+                </a>
                 <div class="message-details">
                     <p>Posted on: {{ $message->created_at->format('F j, Y \a\t H:i:s') }}</p>
                 </div>

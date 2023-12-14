@@ -22,6 +22,10 @@ Route::get('/arcus-triumphalis', '\App\Http\Controllers\OtherPages@arcusTriumpha
 Route::get('/current-user-page', '\App\Http\Controllers\OtherPages@currentUserPage')
     ->middleware(['auth'])
     ->name('current-user-page');
+Route::get('/user-page/{user_id}', '\App\Http\Controllers\OtherPages@userPage')->name('user-page');
+Route::patch('/users/{userId}/update-rating/{action}', '\App\Http\Controllers\OtherPages@updateRating')->name('update-rating');
+Route::delete('/users/{votedUserId}/remove-vote', '\App\Http\Controllers\OtherPages@removeVote')->name('remove-vote');
+
 
 Route::get('/login-page', '\App\Http\Controllers\Auth@loginPage')->name('login-page');
 Route::get('/register-page', '\App\Http\Controllers\Auth@registerPage')->name('register-page');
