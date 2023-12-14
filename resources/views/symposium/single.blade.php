@@ -20,42 +20,60 @@
 
     @include('partials.pagination', ['title' => 'Forum symposiums', 'hide_searсh' => true])
 
+
+    @if($messages->lastPage() > 1)
+        <div class="pagination">
+            @if($messages->currentPage() > 1)
+                <a href="{{ $messages->previousPageUrl() }}">Previous</a>
+            @endif
+
+            @for($i = 1; $i <= $messages->lastPage(); $i++)
+                <a href="{{ $messages->url($i) }}" class="{{ $messages->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
+            @endfor
+
+            @if($messages->currentPage() < $messages->lastPage())
+                <a href="{{ $messages->nextPageUrl() }}">Next</a>
+            @endif
+        </div>
+    @else
+        <div class="pagination">&nbsp;</div>
+    @endif
+
     <main>
-        <div class="message-container">
-            <div class="user-info">
-                <img src="https://picsum.photos/400/400" alt="User Avatar" class="user-avatar">
-                <div>
-                    <h3>User Name</h3>
-                    <span class="user-rating">Rating: 4.5</span>
+
+        @foreach ($messages as $message)
+            <div class="message-container">
+                <div class="user-info">
+                    @if ($message->user->photo_path == "")
+                        <img src="{{ asset('img/profile-pictures/no_profile.png') }}" alt="User Avatar" class="user-avatar">
+                    @else
+                        <img src="{{ asset('img/profile-pictures/'.$message->user->photo_path) }}" alt="User Avatar" class="user-avatar">
+                    @endif
+                    <div>
+                        {{-- Display the actual user name and rating --}}
+                        <h3>{{ $message->user->name }}</h3>
+                        <span class="user-rating">Rating: {{ $message->user->rating }}</span>
+                    </div>
+                </div>
+                <div class="message-details">
+                    <p>Posted on: {{ $message->created_at->format('F j, Y \a\t H:i:s') }}</p>
+                </div>
+                <div class="message-content">
+                    <p>{{ $message->message_text }}</p>
                 </div>
             </div>
-            <div class="message-details">
-                <p>Posted on: January 1, 2023</p>
-            </div>
-            <div class="message-content">
-                <p>This is the forum room message content. It can contain multiple lines and additional details.</p>
-            </div>
-        </div>
+        @endforeach
 
-        <div class="message-container">
-            <div class="user-info">
-                <img src="https://picsum.photos/400/400" alt="User Avatar" class="user-avatar">
-                <div>
-                    <h3>User Name</h3>
-                    <span class="user-rating">Rating: 4.5</span>
-                </div>
-            </div>
-            <div class="message-details">
-                <p>Posted on: January 1, 2023</p>
-            </div>
-            <div class="message-content">
-                <p>This is the forum room message content. It can contain multiple lines and additional details.</p>
-            </div>
-        </div>
-
-        <form class="new-message-form" action="#" method="post">
-            <textarea name="new-message" id="new-message" rows="4" placeholder="Type your message here..." required></textarea>
-            <button type="submit" class="post-button">Post</button>
+        
+        <form class="new-message-form"  action="{{ route('messages-save') }}" method="post">
+            @csrf
+            <input type='hidden' name='room_id' value='{{ $id }}'>
+            <textarea name="message_text" id="new-message" rows="4" placeholder="Type your message here..." required></textarea>
+            @if ($current_user != null)
+                <button type="submit" class="post-button">Post</button>
+            @else
+                <h3 style="color:red">Please login or register</h3>
+            @endif
         </form>
 
     </main>

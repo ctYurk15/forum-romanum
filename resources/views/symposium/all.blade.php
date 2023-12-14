@@ -37,7 +37,10 @@
                 <a href="{{ $rooms->nextPageUrl() }}">Next</a>
             @endif
         </div>
+    @else
+        <div class="pagination">&nbsp;</div>
     @endif
+    
 
     <main>
         @foreach($rooms as $room)

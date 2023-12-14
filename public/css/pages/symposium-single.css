@@ -1,11 +1,8 @@
 main 
 {
-    display: grid;
     justify-content: center;
     min-height: 100vh;
     margin-top: 20px;
-    grid-template-columns: 1fr;
-    grid-gap: 30px;
     margin: 10px
 }
 
@@ -15,6 +12,7 @@ main
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
 }
 
 .user-info 

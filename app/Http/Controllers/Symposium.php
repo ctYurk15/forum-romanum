@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\RoomMessage;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 
 class Symposium extends Controller
 {
@@ -36,11 +38,25 @@ class Symposium extends Controller
         return $rooms;
     }
 
-    public function single(int $symposium_id)
+    public function single(Request $request, int $symposium_id)
     {
+        $messages_count = 5;
+
+        $room = Room::find($symposium_id);
+
+        // Get the page number from the "page" query parameter in the URL
+        $page = $request->query('page', 1);
+
+        // Use the paginate method with the specified page
+        $messages = RoomMessage::where('room_id', $symposium_id)
+            ->orderBy('created_at', 'desc')
+            ->paginate($messages_count, ['*'], 'page', $page);
+
         return view('symposium/single')->with([
-            'name' => 'Discussion1',
-            'id' => $symposium_id
+            'name' => $room->title,
+            'id' => $symposium_id,
+            'current_user' => Auth::check(),
+            'messages' => $messages
         ]);
     }
 
@@ -70,5 +86,22 @@ class Symposium extends Controller
 
         // Redirect back or to a specific page
         return redirect()->route('symposium', ['symposium_id' => $room->id])->with('success', 'Room created successfully!');
+    }
+
+    public function saveMessage(Request $request)
+    {
+        $request->validate([
+            'message_text' => 'required|string',
+        ]);
+
+        // Create a new message
+        $message = new RoomMessage();
+        $message->message_text = $request->input('message_text');
+        $message->user_id = auth()->user()->id;
+        $message->room_id = $request->input('room_id'); 
+
+        $message->save();
+
+        return redirect()->route('symposium', ['symposium_id' => $request->input('room_id')])->with('success', 'Message created successfully');
     }
 }
