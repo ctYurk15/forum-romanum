@@ -22,5 +22,15 @@ class Room extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = null;
 
+    public function messages()
+    {
+        return $this->hasMany(RoomMessage::class);
+    }
+
+    public function getTotalMessagesCount()
+    {
+        return $this->messages()->count();
+    }
+
     // Define relationships or additional methods as needed
 }

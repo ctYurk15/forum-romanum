@@ -18,28 +18,44 @@
 
     @include('partials.header', ['title' => 'Forum suffragiums', 'button_title' => 'Create new suffragium', 'button_link' => route('suffragium-new')])
 
-    @include('partials.pagination')
+    <form class="search-bar" action="{{ route('all-suffragiums') }}" method="get">
+        <input type="text" class="search-input" placeholder="Search..." value="{{ request('name') }}" name='name'>
+        <button class="search-button">Search</button>
+    </form>
+
+    @if($polls->lastPage() > 1)
+        <div class="pagination">
+            @if($polls->currentPage() > 1)
+                <a href="{{ $polls->previousPageUrl() }}">Previous</a>
+            @endif
+
+            @for($i = 1; $i <= $polls->lastPage(); $i++)
+                <a href="{{ $polls->url($i) }}" class="{{ $polls->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
+            @endfor
+
+            @if($polls->currentPage() < $polls->lastPage())
+                <a href="{{ $polls->nextPageUrl() }}">Next</a>
+            @endif
+        </div>
+    @else
+        <div class="pagination">&nbsp;</div>
+    @endif
 
     <main>
-        <a class="forum-suffragium" href="{{ route('suffragium', ['suffragium_id' => 1]) }}">
-            <div class="suffragium-content">
-                <h2>Suffragium 1</h2>
-                <p>Description for Suffragium 1.</p>
-            </div>
-            <div class="suffragium-details">
-                <p>Status: voting</p>
-            </div>
-        </a>
 
-        <a class="forum-suffragium" href="{{ route('suffragium', ['suffragium_id' => 2]) }}">
-            <div class="suffragium-content">
-                <h2>Suffragium 2</h2>
-                <p>Description for Suffragium 2.</p>
-            </div>
-            <div class="suffragium-details">
-                <p>Status: completed</p>
-            </div>
-        </a>
+        @foreach($polls as $poll)
+            <a class="forum-suffragium" href="{{ route('suffragium', ['suffragium_id' => $poll->id]) }}">
+                <div class="suffragium-content">
+                    <h2>{{ $poll->poll_name }}</h2>
+                    <p>{{ $poll->poll_description }}</p>
+                </div>
+                <div class="suffragium-details">
+                    <p>Created: {{ $poll->created_at->format('F d, Y \a\t H:i:s') }}</p><br>
+                    <p>Status: {{ $poll->poll_status }}</p>
+                </div>
+            </a>
+        @endforeach
+
     </main>
 
 </body>

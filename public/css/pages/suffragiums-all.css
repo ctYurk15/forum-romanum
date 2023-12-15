@@ -40,7 +40,6 @@ main
     background-color: #ddd;
     padding: 10px;
     text-align: center;
-    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 70px;

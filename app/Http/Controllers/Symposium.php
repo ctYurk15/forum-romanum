@@ -7,6 +7,7 @@ use App\Models\RoomMessage;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class Symposium extends Controller
@@ -101,6 +102,10 @@ class Symposium extends Controller
         $message->room_id = $request->input('room_id'); 
 
         $message->save();
+
+        $room = Room::find($request->input('room_id'));
+        $room->last_message_at = Carbon::now();
+        $room->save();
 
         return redirect()->route('symposium', ['symposium_id' => $request->input('room_id')])->with('success', 'Message created successfully');
     }

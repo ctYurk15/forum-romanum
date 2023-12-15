@@ -51,8 +51,8 @@
                 </div>
                 <div class="room-details">
                     <p>Created: {{ $room->created_at->format('F j, Y') }}</p>
-                    <p>Last Message: {{ $room->last_message_at ? $room->last_message_at->format('F j, Y') : 'N/A' }}</p>
-                    <p>Total Messages: {{ $room->messages_count ?? 0 }}</p>
+                    <p>Last Message: {{ $room->last_message_at ? date('F j, Y H:i:s', strtotime($room->last_message_at)) : 'N/A' }}</p>
+                    <p>Total Messages: {{ $room->getTotalMessagesCount() ?? 0 }}</p>
                 </div>
             </a>
         @endforeach
