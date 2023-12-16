@@ -26,21 +26,30 @@
 
     <div class="voting-container">
         @foreach($optionsWithVoteCounts as $option)
-            <div class="voting-item">
-                <span class="item-name">{{ $option->option_text }}</span>
-                @if($option->userHasVoted)
-                    <span class="vote-count">Votes: {{ $option->voteCount }}</span>
-                @endif
+        <div class="voting-item {{ $selected_option_id == $option->id ? 'voted-option' : '' }}">
+            <span class="item-name" data-option-id="{{ $option->id }}">
+                {{ $option->option_text }}
+            </span>
 
-                @if ($current_user != null)
-                    <button class="vote-btn" data-option-id="{{ $option->id }}"  data-url="{{ route('vote') }}">Vote</button>
-                @endif
-            </div>
+            @if($option->userHasVoted)
+                <span class="vote-count" style="margin-right: 10px">Votes: {{ $option->voteCount }}</span>
+            @endif
+
+            @if($current_user != null && !$option->userHasVoted)
+                <button class="vote-btn" data-option-id="{{ $option->id }}" data-url="{{ route('vote') }}">Vote</button>
+            @endif
+        </div>
         @endforeach
     </div>
 
 
 </body>
+
+<style>
+   .voted-option {
+       background-color: lightgreen !important; /* Change the color for voted options */
+   }
+</style>
 
 
 

@@ -51,12 +51,21 @@ class Suffragium extends Controller
                 return $option;
             });
 
+        $selectedOption = UserPollSelection::where('user_id', $user->id)
+            ->whereHas('pollOption', function ($query) use ($suffragium_id) {
+                $query->where('poll_id', $suffragium_id);
+            })
+            ->first();
+
+        $selected_option_id = $selectedOption ? $selectedOption->poll_option_id : null;
+
         return view('suffragium/single')->with([
             'name' => 'Vote 1',
             'id' => $suffragium_id,
             'poll' => $poll,
             'optionsWithVoteCounts' => $optionsWithVoteCounts,
             'current_user' => Auth::check(),
+            'selected_option_id' => $selected_option_id
         ]);
     }
 

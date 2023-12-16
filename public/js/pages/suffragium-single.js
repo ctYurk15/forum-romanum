@@ -15,6 +15,8 @@ $(document).ready(function () {
             success: function (response) {
                 // Handle the response (e.g., update UI)
                 console.log(response);
+
+                window.location.reload();
             },
             error: function (error) {
                 console.error('Error:', error);
