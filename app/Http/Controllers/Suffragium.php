@@ -103,4 +103,31 @@ class Suffragium extends Controller
     {
         return view('suffragium/new');
     }
+
+    public function createPoll(Request $request)
+    {
+        $request->validate([
+            'votingName' => 'required|string|max:255',
+            'votingDescription' => 'required|string',
+            'option.*' => 'required|string|max:255',
+        ]);
+
+        
+        $user = auth()->user();
+        $poll = Poll::create([
+            'poll_name' => $request->input('votingName'),
+            'poll_description' => $request->input('votingDescription'),
+            'creator_user_id' => $user->id
+        ]);
+
+        foreach ($request->input('option') as $optionText) {
+            PollOption::create([
+                'poll_id' => $poll->id,
+                'option_text' => $optionText,
+            ]);
+        }
+
+        // You can redirect or respond as needed
+        return redirect()->route('suffragium', ['suffragium_id' => $poll->id]);
+    }
 }

@@ -40,6 +40,7 @@ Route::get('/suffragium', '\App\Http\Controllers\Suffragium@all')->name('all-suf
 Route::get('/suffragium/new', '\App\Http\Controllers\Suffragium@new')->name('suffragium-new')->middleware(['auth']);
 Route::get('/suffragium/{suffragium_id}', '\App\Http\Controllers\Suffragium@single')->name('suffragium');
 Route::post('/vote', '\App\Http\Controllers\Suffragium@vote')->name('vote');
+Route::post('/create-poll', '\App\Http\Controllers\Suffragium@createPoll')->name('createPoll');
 
 //ajax
 Route::post('/set-profile-picture/{picture_path}/{user_id}', '\App\Http\Controllers\UserController@setProfilePicture')->name('set-profile-picture');

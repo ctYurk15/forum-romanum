@@ -21,7 +21,8 @@
 
     <div class="new-voting-container">
         <h2>Create a New Voting</h2>
-        <form action="#" method="post">
+        <form  action="{{ route('createPoll') }}" method="post">
+            @csrf
             <label for="votingName">Voting Name:</label>
             <input type="text" id="votingName" name="votingName" required>
             <br>
