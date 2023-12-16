@@ -1,4 +1,4 @@
-<header>
+<header  style="background: url({{ asset('img/bgs/main-bg.jpg') }}) center/cover no-repeat;">
     <h1 class="page-title">
         {{ $title }}<br>
         @if ($button_title != "")

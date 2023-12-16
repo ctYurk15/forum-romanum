@@ -28,7 +28,7 @@
             @endif
             <div class="available-photos-cotnainers">
                 @foreach($profile_images as $index => $profile_image)
-                    <img src="{{ asset('img/profile-pictures/profile'.($index+1).'.png') }}" 
+                    <img src="{{ asset('img/profile-pictures/'.$profile_image) }}" 
                         @if ($profile_image == $user->photo_path)
                             class="selected-profile-picture"
                         @else

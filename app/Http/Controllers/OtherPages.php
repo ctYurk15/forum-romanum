@@ -61,7 +61,7 @@ class OtherPages extends Controller
     private function getProfileImages()
     {
         // Define elements to exclude
-        $excludeElements = ['.', '..', 'no_profile.png'];
+        $excludeElements = ['.', '..'];
 
         $rootPath = base_path();
         $raw_array = scandir($rootPath . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'profile-pictures');

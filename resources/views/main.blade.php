@@ -13,7 +13,7 @@
     <script src="{{ asset('js/jquery-3.7.1.js') }}" defer></script>
 </head>
 <body>
-    <div id="first-block">
+    <div id="first-block" style="background: url({{ asset('img/bgs/main-bg.jpg') }}) center/cover no-repeat;">
         <!-- Content for the first block -->
         <h1>Welcome to Forum of {{ $city_name }}</h1>
         
@@ -28,13 +28,16 @@
         @endif
     </div>
     <div class="link-block-container">
-        <a id="second-block"  href="{{ route('all-symposiums') }}">
+        <a id="second-block"  href="{{ route('all-symposiums') }}"
+            style="background: url('{{ asset('img/bgs/symposium.png') }}') center/cover no-repeat; ">
             <h2>Symposiums</h2>
         </a>
-        <a id="third-block" href="{{ route('all-suffragiums') }}">
+        <a id="third-block" href="{{ route('all-suffragiums') }}"
+            style="background: url('{{ asset('img/bgs/suffragium.png') }}') center/cover no-repeat; ">
             <h2>Suffragiums</h2>
         </a>
-        <a id="fourth-block" href="{{ route('arcus-triumphalis') }}">
+        <a id="fourth-block" href="{{ route('arcus-triumphalis') }}"
+            style="background: url('{{ asset('img/bgs/arcus_triumphalis.png') }}') center/cover no-repeat; ">
             <h2>Arcus triumphalis</h2>
         </a>
     </div>

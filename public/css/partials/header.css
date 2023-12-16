@@ -9,7 +9,6 @@ body
 header 
 {
     height: 20vh;
-    background: url('https://picsum.photos/1920/250') center/cover no-repeat;
     color: #fff;
     display: flex;
     align-items: center;

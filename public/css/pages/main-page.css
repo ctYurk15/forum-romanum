@@ -14,7 +14,6 @@ body
     position: relative;
     height: 40vh;
     width: 100%;
-    background: url('https://picsum.photos/1920/400') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,19 +73,4 @@ body
 {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-}
-
-#second-block 
-{
-    background: url('https://picsum.photos/750/450?random=1') center/cover no-repeat; 
-}
-
-#third-block 
-{
-    background: url('https://picsum.photos/750/450?random=2') center/cover no-repeat; 
-}
-
-#fourth-block 
-{
-    background: url('https://picsum.photos/750/450?random=3') center/cover no-repeat; 
 }
