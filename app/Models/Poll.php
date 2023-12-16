@@ -24,4 +24,16 @@ class Poll extends Model
     }
 
     // Additional methods or relationships can be added here
+    public function options()
+    {
+        return $this->hasMany(PollOption::class);
+    }
+
+    // Your other model methods...
+
+    // New method to get all poll options
+    public function getAllOptions()
+    {
+        return $this->options;
+    }
 }

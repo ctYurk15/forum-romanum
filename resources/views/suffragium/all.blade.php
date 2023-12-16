@@ -51,7 +51,7 @@
                 </div>
                 <div class="suffragium-details">
                     <p>Created: {{ $poll->created_at->format('F d, Y \a\t H:i:s') }}</p><br>
-                    <p>Status: {{ $poll->poll_status }}</p>
+                    <p>Type: {{ $poll->poll_type == 'default' ? 'Default' : 'User ban' }}</p>
                 </div>
             </a>
         @endforeach

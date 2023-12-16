@@ -15,7 +15,7 @@ class CreatePollsTable extends Migration
             $table->string('poll_name');
             $table->text('poll_description');
             $table->unsignedBigInteger('creator_user_id');
-            $table->string('poll_status')->default('pending');
+            $table->string('poll_type')->default('default');
             $table->timestamps();
 
             // Add foreign key constraint for the creator user

@@ -39,6 +39,7 @@ Route::post('/message-save', '\App\Http\Controllers\Symposium@saveMessage')->nam
 Route::get('/suffragium', '\App\Http\Controllers\Suffragium@all')->name('all-suffragiums');
 Route::get('/suffragium/new', '\App\Http\Controllers\Suffragium@new')->name('suffragium-new')->middleware(['auth']);
 Route::get('/suffragium/{suffragium_id}', '\App\Http\Controllers\Suffragium@single')->name('suffragium');
+Route::post('/vote', '\App\Http\Controllers\Suffragium@vote')->name('vote');
 
 //ajax
 Route::post('/set-profile-picture/{picture_path}/{user_id}', '\App\Http\Controllers\UserController@setProfilePicture')->name('set-profile-picture');

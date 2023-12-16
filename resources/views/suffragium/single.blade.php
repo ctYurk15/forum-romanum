@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Forum Rooms</title>
 
@@ -17,27 +18,32 @@
 </head>
 <body>
 
-    @include('partials.header', ['title' => 'Suffragium '.$name, 'button_title' => 'Back to suffragiums', 'button_link' => route('all-suffragiums')])
+    @include('partials.header', ['title' => 'Suffragium '.$poll->poll_name, 'button_title' => 'Back to suffragiums', 'button_link' => route('all-suffragiums')])
+
+    <div style="margin-right: 50px; margin-left: 50px; margin-top: 10px; text-align: center">
+        {{$poll->poll_description}}
+    </div>
 
     <div class="voting-container">
-        <div class="voting-item">
-            <span class="item-name">Item 1</span>
-            <button class="vote-btn">Vote</button>
-        </div>
+        @foreach($optionsWithVoteCounts as $option)
+            <div class="voting-item">
+                <span class="item-name">{{ $option->option_text }}</span>
+                @if($option->userHasVoted)
+                    <span class="vote-count">Votes: {{ $option->voteCount }}</span>
+                @endif
 
-        <div class="voting-item">
-            <span class="item-name">Item 2</span>
-            <button class="vote-btn">Vote</button>
-        </div>
-
-        <div class="voting-item">
-            <span class="item-name">Item 3</span>
-            <button class="vote-btn">Vote</button>
-        </div>
-
-        <!-- Add more items as needed -->
+                @if ($current_user != null)
+                    <button class="vote-btn" data-option-id="{{ $option->id }}"  data-url="{{ route('vote') }}">Vote</button>
+                @endif
+            </div>
+        @endforeach
     </div>
 
 
 </body>
+
+
+
+<script src="{{ asset('js/pages/suffragium-single.js') }}" defer></script>
+
 </html>
