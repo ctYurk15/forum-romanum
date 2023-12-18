@@ -42,6 +42,12 @@ Route::get('/suffragium/{suffragium_id}', '\App\Http\Controllers\Suffragium@sing
 Route::post('/vote', '\App\Http\Controllers\Suffragium@vote')->name('vote');
 Route::post('/create-poll', '\App\Http\Controllers\Suffragium@createPoll')->name('createPoll');
 
+Route::get('/adminka', '\App\Http\Controllers\Adminka@main')->name('adminka')->middleware(['auth']);
+Route::delete('/admin/delete-record/{recordType}/{recordId}', '\App\Http\Controllers\Adminka@deleteRecord')
+    ->name('admin.deleteRecord');
+Route::post('/admin/make-admin/{userId}', '\App\Http\Controllers\Adminka@makeAdmin')->name('admin.makeAdmin');
+
+
 //ajax
 Route::post('/set-profile-picture/{picture_path}/{user_id}', '\App\Http\Controllers\UserController@setProfilePicture')->name('set-profile-picture');
 
